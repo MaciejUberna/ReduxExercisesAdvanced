@@ -7,6 +7,10 @@ Folder containing the project is:
 
 redux-advanced
 
+or
+
+adding-middleware
+
 ## Introduction
 
 Study how to handle asynchronous states with Redux. 
@@ -18,7 +22,7 @@ The purpose of this project is to evaluate different state handling solutions in
 ## Deployment
 
 Install node.js on your machine
-Go to redux-advanced folder and type in console (without quotes):
+Go to redux-advanced or adding-middleware folder and type in console (without quotes):
 "npm install"
 
 then type:
