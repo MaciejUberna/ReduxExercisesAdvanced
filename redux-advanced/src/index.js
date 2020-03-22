@@ -8,8 +8,8 @@ import {createStore,combineReducers,applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk'
 
-import reducerCounter from './Store/Reducers/counter';
-import reducerResult from './Store/Reducers/result';
+import reducerCounter from './store/reducers/counter';
+import reducerResult from './store/reducers/result';
 
 const rootRecucer = combineReducers({
     ctr: reducerCounter,

@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 
-import * as actionTypes from '../../Store/actions/actionTypes';
-import * as counterActionCreators from '../../Store/actions/counter';
-import * as resultActionCreators from '../../Store/actions/result';
+import * as actionTypes from '../../store/actions/actionTypes';
+import * as counterActionCreators from '../../store/actions/counter';
+import * as resultActionCreators from '../../store/actions/result';
 
 const toPascal = (str) => {
     return str.replace(/\w+/g,(w)=>w[0].toUpperCase()+w.slice(1).toLowerCase());
