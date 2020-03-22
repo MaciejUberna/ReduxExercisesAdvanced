@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 
-import * as actionCreators from '../../Store/actions/actions';
+import * as actionTypes from '../../Store/actions/actionTypes';
+import * as counterActionCreators from '../../Store/actions/counter';
+import * as resultActionCreators from '../../Store/actions/result';
 
 const toPascal = (str) => {
     return str.replace(/\w+/g,(w)=>w[0].toUpperCase()+w.slice(1).toLowerCase());
@@ -15,21 +17,21 @@ const subtractValue = 6;
 
 const controls = {
     inc: {
-        label: toPascal(actionCreators.INCREMENT),
-        action: actionCreators.INCREMENT,
+        label: toPascal(actionTypes.INCREMENT),
+        action: actionTypes.INCREMENT,
     },
     dec: {
-        label: toPascal(actionCreators.DECREMENT),
-        action: actionCreators.DECREMENT,
+        label: toPascal(actionTypes.DECREMENT),
+        action: actionTypes.DECREMENT,
     },
     add: {
-        label: toPascal(actionCreators.ADD)+' '+addValue,
-        action: actionCreators.ADD,
+        label: toPascal(actionTypes.ADD)+' '+addValue,
+        action: actionTypes.ADD,
         value: addValue,
     },
     sub: {
-        label: toPascal(actionCreators.SUBTRACT)+' '+subtractValue,
-        action: actionCreators.SUBTRACT,
+        label: toPascal(actionTypes.SUBTRACT)+' '+subtractValue,
+        action: actionTypes.SUBTRACT,
         value: subtractValue,
     }
 }
@@ -59,9 +61,9 @@ const mapStateToProps = state => ({
 });
  
 const mapDispatchToProps = dispatch => ({
-    onModifyCounter: (type, value) => dispatch(actionCreators.modifyCounter(type,value)),
-    onStoreResult: (result) => dispatch(actionCreators.storeResult(result)),
-    onDeleteResult: (elementId) => dispatch(actionCreators.deleteResult(elementId))
+    onModifyCounter: (type, value) => dispatch(counterActionCreators.modifyCounter(type,value)),
+    onStoreResult: (result) => dispatch(resultActionCreators.storeResult(result)),
+    onDeleteResult: (elementId) => dispatch(resultActionCreators.deleteResult(elementId))
 });
  
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
