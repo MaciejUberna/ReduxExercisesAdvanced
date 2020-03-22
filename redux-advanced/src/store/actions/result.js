@@ -4,16 +4,21 @@ import * as actionTypes from './actionTypes';
 
 //Extra action to handle async call
 export const saveResult = (res) => {
-    // const updatedResult = res * 2;
+    const updatedResult = res * 2;
     return {
         type: actionTypes.STORE_RESULT,
-        result: res
+        result: updatedResult
     }; 
 };
 
 export const storeResult = (result) => {
-    return  dispatch => {
+    //getState enables to get to the state prior to dispatched action.
+    //But try not to overuse getState. Instead pass valid state data as an argument
+    //Of action creator.
+    return  (dispatch, getState) => {
         setTimeout(() => {
+            const oldCounter = getState().ctr.counter
+            console.log('[PrevState of storeResult action creator is: ',oldCounter)
             dispatch(saveResult(result));
         },5000);
     };
