@@ -16,6 +16,10 @@ const rootRecucer = combineReducers({
     res: reducerResult
 });
 
+//Dive deeper into redux on redux.js.org
+//There are recipes there
+//See especially Immutable Update Patterns in Structuring Reducers
+
 //Add npm install --save redux-thunk
 // For handling asunc calls
 

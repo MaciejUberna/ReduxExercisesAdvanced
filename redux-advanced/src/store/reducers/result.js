@@ -5,6 +5,10 @@ const initialState = {
     results: []
 }
 
+//Dive deeper into redux on redux.js.org
+//There are recipes there
+//See especially Immutable Update Patterns
+
 //Alternative folder structure for the project can be for example
 //Use separate store folder for reducers and action creators as given container subfolder
 //For given container states
