@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import {createStore,combineReducers,applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk'
 
 import reducerCounter from './Store/Reducers/counter';
 import reducerResult from './Store/Reducers/result';
@@ -14,6 +15,9 @@ const rootRecucer = combineReducers({
     ctr: reducerCounter,
     res: reducerResult
 });
+
+//Add npm install --save redux-thunk
+// For handling asunc calls
 
 //installed Redux DevTools plugin on chrome
 //https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd/related?hl=pl
@@ -31,7 +35,7 @@ const logger = store => {
 }
 
 //Applied composeEnhansers to store to applyMiddleware
-const store = createStore(rootRecucer,composeEnhansers(applyMiddleware(logger)));
+const store = createStore(rootRecucer,composeEnhansers(applyMiddleware(logger, thunk)));
 
 ReactDOM.render(<Provider store={store}> <App /> </Provider>, document.getElementById('root'));
 registerServiceWorker();
