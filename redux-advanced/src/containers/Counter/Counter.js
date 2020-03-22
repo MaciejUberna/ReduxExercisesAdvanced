@@ -4,47 +4,42 @@ import { connect } from 'react-redux';
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 
-import * as actionTypes from '../../Store/actions/actions';
-import {increment} from '../../Store/actions/actions';
+import * as actionCreators from '../../Store/actions/actions';
 
-// const toPascal = (str) => {
-//     return str.replace(/\w+/g,(w)=>w[0].toUpperCase()+w.slice(1).toLowerCase());
-// }
+const toPascal = (str) => {
+    return str.replace(/\w+/g,(w)=>w[0].toUpperCase()+w.slice(1).toLowerCase());
+}
 
-// const controls = {
-//     inc: {
-//         label: toPascal(actionTypes.INCREMENT),
-//         action: actionTypes.INCREMENT,
-//     },
-//     dec: {
-//         label: toPascal(actionTypes.DECREMENT),
-//         action: actionTypes.DECREMENT,
-//     },
-//     add: {
-//         label: toPascal(actionTypes.ADD)+' 15',
-//         action: actionTypes.ADD,
-//         value: 15,
-//     },
-//     sub: {
-//         label: toPascal(actionTypes.SUBTRACT)+' 5',
-//         action: actionTypes.SUBTRACT,
-//         value: 5,
-//     }
-// }
+const controls = {
+    inc: {
+        label: toPascal(actionCreators.INCREMENT),
+        action: actionCreators.INCREMENT,
+    },
+    dec: {
+        label: toPascal(actionCreators.DECREMENT),
+        action: actionCreators.DECREMENT,
+    },
+    add: {
+        label: toPascal(actionCreators.ADD)+' 15',
+        action: actionCreators.ADD,
+        value: 15,
+    },
+    sub: {
+        label: toPascal(actionCreators.SUBTRACT)+' 5',
+        action: actionCreators.SUBTRACT,
+        value: 5,
+    }
+}
  
 const Counter = props => (
     <div>
         <CounterOutput value={props.ctr} />
-        {/* {Object.keys(controls).map(key => (
+        {Object.keys(controls).map(key => (
             <CounterControl
                 key={key}
                 label={controls[key].label}
                 clicked={props.onModifyCounter.bind(this,controls[key].action, controls[key].value)} />
-        ))} */}
-        <CounterControl label="Increment" clicked={props.onIncrementCounter} />
-        <CounterControl label="Decrement" clicked={props.onDecrementCounter}  />
-        <CounterControl label="Add 10" clicked={props.onAddCounter}  />
-        <CounterControl label="Subtract 15" clicked={props.onSubtractCounter}  />
+        ))}
         <hr />
         <button onClick={props.onStoreResult.bind(this,props.ctr)}>Store result</button>
         <ul>
@@ -61,13 +56,9 @@ const mapStateToProps = state => ({
 });
  
 const mapDispatchToProps = dispatch => ({
-    //onModifyCounter: (type, value) => dispatch({ type, value }),
-    onIncrementCounter: () => dispatch({type: actionTypes.INCREMENT}),
-    onDecrementCounter: () => dispatch({type: actionTypes.DECREMENT}),
-    onAddCounter: () => dispatch({type: actionTypes.ADD, value: 10}),
-    onSubtractCounter: () => dispatch({type: actionTypes.SUBTRACT, value: 15}),
-    onStoreResult: (result) => dispatch({type: actionTypes.STORE_RESULT, result: result}),
-    onDeleteResult: (elementId) => dispatch({type: actionTypes.DELETE_RESULT,resultElementId: elementId})
+    onModifyCounter: (type, value) => dispatch(actionCreators.modifyCounter(type,value)),
+    onStoreResult: (result) => dispatch(actionCreators.storeResult(result)),
+    onDeleteResult: (elementId) => dispatch(actionCreators.deleteResult(elementId))
 });
  
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
