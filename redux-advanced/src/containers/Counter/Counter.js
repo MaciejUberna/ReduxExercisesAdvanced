@@ -10,6 +10,9 @@ const toPascal = (str) => {
     return str.replace(/\w+/g,(w)=>w[0].toUpperCase()+w.slice(1).toLowerCase());
 }
 
+const addValue = 15;
+const subtractValue = 6;
+
 const controls = {
     inc: {
         label: toPascal(actionCreators.INCREMENT),
@@ -20,14 +23,14 @@ const controls = {
         action: actionCreators.DECREMENT,
     },
     add: {
-        label: toPascal(actionCreators.ADD)+' 15',
+        label: toPascal(actionCreators.ADD)+' '+addValue,
         action: actionCreators.ADD,
-        value: 15,
+        value: addValue,
     },
     sub: {
-        label: toPascal(actionCreators.SUBTRACT)+' 5',
+        label: toPascal(actionCreators.SUBTRACT)+' '+subtractValue,
         action: actionCreators.SUBTRACT,
-        value: 5,
+        value: subtractValue,
     }
 }
  
