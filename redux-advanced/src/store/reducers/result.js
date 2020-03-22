@@ -2,10 +2,11 @@ import * as actionTypes from '../actions';
 
 const initialState = {
     results: []
-};
+}
 
-const reducer = ( state = initialState, action ) => {
-    switch ( action.type ) {
+const reducer = (state = initialState, action) => {
+
+    switch(action.type) {
         case actionTypes.STORE_RESULT:
             return {
                 ...state,
@@ -13,16 +14,17 @@ const reducer = ( state = initialState, action ) => {
             }
         case actionTypes.DELETE_RESULT:
             // const id = 2;
-            // const newArray = [...state.results];
-            // newArray.splice(id, 1)
-            const updatedArray = state.results.filter(result => result.id !== action.resultElId);
+            // const newArrayOfResults = [...state.results];
+            // newArrayOfResults.splice(id,1)
+            const newArrayOfResults = state.results.filter((result) => result.id !== action.resultElementId);
             return {
                 ...state,
-                results: updatedArray
+                results: newArrayOfResults
             }
         default:
             return state;
-    }
+    };
+
 };
 
 export default reducer;

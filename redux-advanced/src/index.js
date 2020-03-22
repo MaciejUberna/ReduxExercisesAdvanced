@@ -1,20 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
-
-import counterReducer from './store/reducers/counter';
-import resultReducer from './store/reducers/result';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-const rootReducer = combineReducers({
-    ctr: counterReducer,
-    res: resultReducer
+import {createStore,combineReducers,applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+
+import reducerCounter from './Store/Reducers/counter';
+import reducerResult from './Store/Reducers/result';
+
+const rootRecucer = combineReducers({
+    ctr: reducerCounter,
+    res: reducerResult
 });
 
-const store = createStore(rootReducer);
+//installed Redux DevTools plugin on chrome
+//https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd/related?hl=pl
+const composeEnhansers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+const logger = store => {
+    return next => {
+        return action => {
+            console.log('[Middleware] Dsispatching: ',action);
+            const result = next(action);
+            console.log('[Middlewere] next state',store.getState());
+            return result;
+        }
+    }
+}
+
+//Applied composeEnhansers to store to applyMiddleware
+const store = createStore(rootRecucer,composeEnhansers(applyMiddleware(logger)));
+
+ReactDOM.render(<Provider store={store}> <App /> </Provider>, document.getElementById('root'));
 registerServiceWorker();
