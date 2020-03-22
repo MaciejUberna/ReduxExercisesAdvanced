@@ -5,15 +5,14 @@ import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 
 import * as actionTypes from '../../store/actions/actionTypes';
-import * as counterActionCreators from '../../store/actions/counter';
-import * as resultActionCreators from '../../store/actions/result';
+import * as actionCreators from '../../store/actions/index';
+
+const addValue = 15;
+const subtractValue = 6;
 
 const toPascal = (str) => {
     return str.replace(/\w+/g,(w)=>w[0].toUpperCase()+w.slice(1).toLowerCase());
 }
-
-const addValue = 15;
-const subtractValue = 6;
 
 const controls = {
     inc: {
@@ -61,9 +60,9 @@ const mapStateToProps = state => ({
 });
  
 const mapDispatchToProps = dispatch => ({
-    onModifyCounter: (type, value) => dispatch(counterActionCreators.modifyCounter(type,value)),
-    onStoreResult: (result) => dispatch(resultActionCreators.storeResult(result)),
-    onDeleteResult: (elementId) => dispatch(resultActionCreators.deleteResult(elementId))
+    onModifyCounter: (type, value) => dispatch(actionCreators.modifyCounter(type,value)),
+    onStoreResult: (result) => dispatch(actionCreators.storeResult(result)),
+    onDeleteResult: (elementId) => dispatch(actionCreators.deleteResult(elementId))
 });
  
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
