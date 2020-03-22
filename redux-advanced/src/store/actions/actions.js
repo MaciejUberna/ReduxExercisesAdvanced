@@ -4,3 +4,11 @@ export const ADD = 'ADD';
 export const SUBTRACT = 'SUBTRACT';
 export const STORE_RESULT = 'STORE_RESULT';
 export const DELETE_RESULT = 'DELETE_RESULT';
+
+// Action creator is just a function that returns an action or creates an action.
+
+export const increment = () => {
+    return {
+        type: INCREMENT
+    };
+};
