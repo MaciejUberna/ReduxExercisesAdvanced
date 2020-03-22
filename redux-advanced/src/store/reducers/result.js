@@ -10,7 +10,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.STORE_RESULT:
             return {
                 ...state,
-                results: state.results.concat({id: new Date(), value: action.result})
+                results: [{id: new Date(), value: action.result}].concat(state.results)
             }
         case actionTypes.DELETE_RESULT:
             // const id = 2;
