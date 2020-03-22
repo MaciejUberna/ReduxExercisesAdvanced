@@ -5,6 +5,10 @@ const initialState = {
     results: []
 }
 
+//Alternative folder structure for the project can be for example
+//Use separate store folder for reducers and action creators as given container subfolder
+//For given container states
+
 const deleteResult = (state, action) => {
     const updateArray = state.results.filter((result) => result.id !== action.resultElementId);
     return updateObject(state, { results: updateArray });
