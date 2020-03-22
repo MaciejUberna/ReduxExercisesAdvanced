@@ -17,6 +17,7 @@ export const storeResult = (result) => {
         },5000);
     };
 };
+
 export const deleteResult = (resultElementId) => {
     return {
         type: actionTypes.DELETE_RESULT,
