@@ -16,6 +16,13 @@ const rootRecucer = combineReducers({
     res: reducerResult
 });
 
+//Useful links:
+// Middleware: https://redux.js.org/advanced/middleware/
+
+// redux-thunk package: https://github.com/gaearon/redux-thunk
+
+// Async Actions: https://redux.js.org/advanced/async-actions
+
 //Dive deeper into redux on redux.js.org
 //There are recipes there
 //See especially Immutable Update Patterns in Structuring Reducers
