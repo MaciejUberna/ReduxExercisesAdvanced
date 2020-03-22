@@ -4,6 +4,7 @@ import * as actionTypes from './actionTypes';
 
 //Extra action to handle async call
 export const saveResult = (res) => {
+    // const updatedResult = res * 2;
     return {
         type: actionTypes.STORE_RESULT,
         result: res
